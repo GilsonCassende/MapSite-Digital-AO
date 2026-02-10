@@ -316,9 +316,10 @@ h2{margin:0 0 1rem;color:var(--blue)}
    - Make CTA full-width / larger touch target for conversion
    All changes scoped to this media query to avoid affecting desktop. */
 @media (max-width:768px){
-  /* Reduce hero height on small devices so content and next section are visible sooner */
-  .hero{min-height:72vh}
-  .hero-slide{min-height:72vh}
+    /* Reduce hero height on small devices so content and next section are visible sooner
+      Use a slightly smaller height for a professional mobile layout */
+    .hero{min-height:66vh}
+    .hero-slide{min-height:66vh}
 
   /* Keep carousel layout flow-friendly on mobile */
   #heroCarousel{position:relative;height:auto}
@@ -355,35 +356,46 @@ h2{margin:0 0 1rem;color:var(--blue)}
    - Runs only on small screens to avoid changing desktop behavior
    - Small delays improve perceived motion and clarity */
 @media (max-width:768px){
-  /* Faster content reveal: shorter duration and no delays to avoid waiting during slide change */
+  /* Smooth content reveal while avoiding blank hero frames:
+     - Keep carousel fade smooth (0.9s)
+     - Reveal incoming slide content immediately by targeting .carousel-item-next/.carousel-item-prev
+     - Keep content transitions short so text appears promptly during fade */
   .slide-content{
     opacity:0;
-    transform:translateY(6px);
-    transition:opacity .22s ease, transform .22s ease;
+    transform:translateY(4px);
+    transition:opacity .18s ease, transform .18s ease;
     will-change:opacity, transform;
     transition-delay:0s;
   }
-  /* Immediately reveal content when slide becomes active */
+  /* Show content on active slide */
   .carousel-item.active .slide-content{
     opacity:1;
     transform:none;
   }
-
-  /* CTA: quicker reveal with minimal delay for stronger conversion */
-  .btn-cta{
-    opacity:0;
-    transform:translateY(4px) scale(0.996);
-    transition:opacity .22s ease, transform .22s ease;
-    will-change:opacity, transform;
+  /* Also show content for the incoming slide during the transition (Bootstrap adds .carousel-item-next/.carousel-item-prev) */
+  .carousel .carousel-item-next .slide-content,
+  .carousel .carousel-item-prev .slide-content{
+    opacity:1;
+    transform:none;
     transition-delay:0s;
   }
-  .carousel-item.active .btn-cta{
+
+  /* CTA: quick reveal and also visible on incoming slide during transition */
+  .btn-cta{
+    opacity:0;
+    transform:translateY(3px) scale(0.997);
+    transition:opacity .18s ease, transform .18s ease;
+    will-change:opacity, transform;
+  }
+  .carousel-item.active .btn-cta,
+  .carousel .carousel-item-next .btn-cta,
+  .carousel .carousel-item-prev .btn-cta{
     opacity:1;
     transform:none;
   }
 
-  /* Shorten the carousel fade duration on mobile so content appears faster during slide changes */
-  .carousel .carousel-item{ transition: opacity 0.6s cubic-bezier(.2,.9,.3,1) !important; }
+  /* Make the carousel fade smoother on mobile but ensure overlap with content */
+  .carousel .carousel-item{ transition: opacity 0.9s cubic-bezier(.2,.9,.3,1) !important; }
 }
 
 /* Reveal animations */
