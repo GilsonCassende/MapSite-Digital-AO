@@ -233,6 +233,41 @@ h2{margin:0 0 1rem;color:var(--blue)}
 .steps li{background:var(--muted);padding:1rem;border-radius:8px}
 .steps li span{display:block;color:var(--gray);margin-top:.5rem}
 
+/* Professional 'Como funciona' styling */
+.como-funciona .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;align-items:stretch}
+.como-funciona .steps li{background:#fff;border:1px solid #e9f0f6;padding:1rem 1.25rem;border-radius:12px;box-shadow:0 10px 30px rgba(10,58,102,0.04);display:grid;grid-template-columns:56px 1fr 28px;align-items:center;gap:1rem;min-height:96px;transition:transform .22s cubic-bezier(.2,.9,.3,1),box-shadow .22s}
+.como-funciona .steps li{cursor:pointer}
+.como-funciona .steps li::before{counter-increment:step;content:counter(step);counter-reset:none;width:44px;height:44px;border-radius:999px;background:linear-gradient(90deg,var(--blue),#0c4fb0);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-size:1rem;justify-self:center;grid-column:1}
+.como-funciona .steps{counter-reset:step}
+.como-funciona .steps li strong{display:block;font-family:'Playfair Display', Georgia, serif;font-size:1.05rem;color:var(--blue);font-weight:700;margin:0;grid-column:2;text-align:left}
+.como-funciona .steps li span{display:block;color:var(--gray);margin-top:.5rem;font-size:.98rem;line-height:1.6;max-width:none;grid-column:2;overflow:visible}
+
+/* Collapsible description: keep compact by default and expand on .open */
+.como-funciona .steps li span{transition:max-height .28s ease,opacity .22s}
+.como-funciona .steps li.open span{max-height:240px}
+
+/* Visual caret indicator on the right */
+.como-funciona .steps li::after{content:'›';color:rgba(10,58,102,0.28);font-size:20px;transform:rotate(90deg);transition:transform .22s, color .18s;grid-column:3;justify-self:center}
+.como-funciona .steps li.open::after{transform:rotate(-90deg);color:var(--blue)}
+
+/* Focus styles for keyboard users */
+.como-funciona .steps li:focus{outline:3px solid rgba(10,66,255,0.12);outline-offset:4px}
+.como-funciona .steps li:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(10,58,102,0.07)}
+
+/* Responsive: 2 columns for medium screens, 1 column for small */
+@media (max-width:900px){
+  .como-funciona .steps{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:700px){
+  .como-funciona .steps{grid-template-columns:1fr;gap:1rem}
+  .como-funciona .steps li{padding:1rem;grid-template-columns:48px 1fr 28px;min-height:80px}
+  .como-funciona .steps li::before{width:40px;height:40px;font-size:.95rem}
+  .como-funciona .steps li strong{font-size:1.02rem;text-align:left}
+  /* On small screens collapse description by default and allow open to expand */
+  .como-funciona .steps li span{max-height:3.6em;overflow:hidden}
+  .como-funciona .steps li.open span{max-height:240px}
+}
+
 .cta-inner{text-align:center;padding:1.25rem;border-radius:10px;background:#ffffff;box-shadow:0 6px 20px rgba(10,58,102,0.04)}
 
 /* Footer */

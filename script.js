@@ -254,4 +254,28 @@ document.addEventListener('DOMContentLoaded', function(){
       });
     }
   }catch(e){/* noop */}
+
+  // Make 'Como funciona' steps interactive (expand/collapse)
+  try{
+    const steps = document.querySelectorAll('.como-funciona .steps li');
+    if(steps && steps.length){
+      steps.forEach((li, idx) => {
+        li.setAttribute('tabindex', '0');
+        li.setAttribute('role', 'button');
+        li.setAttribute('aria-expanded', 'false');
+        // ensure keyboard activation
+        const toggle = (ev) => {
+          const isOpen = li.classList.toggle('open');
+          li.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        };
+        li.addEventListener('click', toggle);
+        li.addEventListener('keydown', (e) => {
+          if(e.key === 'Enter' || e.key === ' '){
+            e.preventDefault();
+            toggle();
+          }
+        });
+      });
+    }
+  }catch(e){console.debug('como-funciona interactivity error', e)}
 });
