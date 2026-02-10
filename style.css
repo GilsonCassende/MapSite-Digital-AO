@@ -240,7 +240,8 @@ h2{margin:0 0 1rem;color:var(--blue)}
 .como-funciona .steps li::before{counter-increment:step;content:counter(step);counter-reset:none;width:44px;height:44px;border-radius:999px;background:linear-gradient(90deg,var(--blue),#0c4fb0);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-size:1rem;justify-self:center;grid-column:1}
 .como-funciona .steps{counter-reset:step}
 .como-funciona .steps li strong{display:block;font-family:'Playfair Display', Georgia, serif;font-size:1.02rem;color:var(--blue);font-weight:700;margin:0 0 0.125rem 0;grid-column:2;text-align:left}
-.como-funciona .steps li span{color:var(--gray);font-size:.98rem;line-height:1.5;max-width:none;grid-column:2;margin:0}
+.como-funciona .steps li span{display:none;color:var(--gray);font-size:.98rem;line-height:1.5;max-width:none;grid-column:2;margin:0;transition:max-height .22s ease,opacity .18s ease}
+.como-funciona .steps li.open span{display:block;opacity:1;overflow:visible;-webkit-line-clamp:unset;max-height:240px}
 
 /* Collapsible description: keep compact by default and expand on .open */
 .como-funciona .steps li span{transition:max-height .28s ease,opacity .22s}
