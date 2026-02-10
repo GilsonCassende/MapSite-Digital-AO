@@ -235,12 +235,12 @@ h2{margin:0 0 1rem;color:var(--blue)}
 
 /* Professional 'Como funciona' styling */
 .como-funciona .steps{display:grid;grid-template-columns:1fr;gap:1.25rem;align-items:stretch;max-width:980px;margin:0 auto}
-.como-funciona .steps li{background:#fff;border:1px solid #e9f0f6;padding:0.75rem 1rem;border-radius:12px;box-shadow:0 10px 30px rgba(10,58,102,0.04);display:grid;grid-template-columns:56px 1fr 28px;align-items:start;gap:0.75rem;min-height:72px;transition:transform .22s cubic-bezier(.2,.9,.3,1),box-shadow .22s}
+.como-funciona .steps li{background:#fff;border:1px solid #e9f0f6;padding:0.5rem 0.9rem;border-radius:12px;box-shadow:0 10px 30px rgba(10,58,102,0.04);display:grid;grid-template-columns:56px 1fr 28px;align-items:start;justify-items:start;gap:0.5rem;min-height:64px;transition:transform .22s cubic-bezier(.2,.9,.3,1),box-shadow .22s}
 .como-funciona .steps li{cursor:pointer}
 .como-funciona .steps li::before{counter-increment:step;content:counter(step);counter-reset:none;width:44px;height:44px;border-radius:999px;background:linear-gradient(90deg,var(--blue),#0c4fb0);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-size:1rem;justify-self:center;grid-column:1}
 .como-funciona .steps{counter-reset:step}
-.como-funciona .steps li strong{display:block;font-family:'Playfair Display', Georgia, serif;font-size:1.02rem;color:var(--blue);font-weight:700;margin:0 0 0.25rem 0;grid-column:2;text-align:left}
-.como-funciona .steps li span{color:var(--gray);font-size:.98rem;line-height:1.6;max-width:none;grid-column:2}
+.como-funciona .steps li strong{display:block;font-family:'Playfair Display', Georgia, serif;font-size:1.02rem;color:var(--blue);font-weight:700;margin:0 0 0.125rem 0;grid-column:2;text-align:left}
+.como-funciona .steps li span{color:var(--gray);font-size:.98rem;line-height:1.5;max-width:none;grid-column:2;margin:0}
 
 /* Collapsible description: keep compact by default and expand on .open */
 .como-funciona .steps li span{transition:max-height .28s ease,opacity .22s}
