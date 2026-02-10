@@ -44,6 +44,10 @@ body{
 .btn-secondary, .btn-outline-primary{background:transparent;color:var(--blue);border:2px solid rgba(10,58,102,0.08)}
 .btn:hover{transform:translateY(-4px);opacity:.98}
 
+/* Deixa o botão de CTA "Pedir orçamento" sempre colorido na seção .cta */
+.cta .btn-secondary{background:linear-gradient(90deg,var(--blue),#0c4fb0);color:var(--white);border:0;box-shadow:0 10px 30px rgba(10,58,102,0.12)}
+.cta .btn-secondary:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(10,58,102,0.14)}
+
 /* Sections */
 section{padding:2.5rem 0}
 h2{margin:0 0 1rem;color:var(--blue)}
