@@ -309,6 +309,79 @@ h2{margin:0 0 1rem;color:var(--blue)}
 .whatsapp-float{position:fixed;right:18px;bottom:18px;background:#25D366;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(2,136,79,0.2);z-index:60;transition:transform .18s}
 .whatsapp-float:hover{transform:translateY(-4px)}
 
+/* Mobile-specific hero and UX improvements (max-width:768px)
+   - Reduce hero height to 80-85vh so part of next section is visible
+   - Darken overlay to improve contrast on mobile only
+   - Tweak typography for better readability and fewer line breaks
+   - Make CTA full-width / larger touch target for conversion
+   All changes scoped to this media query to avoid affecting desktop. */
+@media (max-width:768px){
+  /* Slightly taller than earlier mobile rules to leave a hint of next section */
+  .hero{min-height:80vh}
+  .hero-slide{min-height:80vh}
+
+  /* Keep carousel layout flow-friendly on mobile */
+  #heroCarousel{position:relative;height:auto}
+  .carousel-inner, .carousel-item{position:relative}
+
+  /* Stronger, consistent overlay on mobile for legibility */
+  .hero-slide::before{
+    /* Use an opaque-ish overlay to ensure white text pops on small screens */
+    background:linear-gradient(180deg, rgba(0,0,0,0.50) 0%, rgba(0,0,0,0.44) 30%, rgba(0,0,0,0.28) 60%, rgba(0,0,0,0) 100%);
+  }
+
+  /* Content centering and tighter spacing for mobile reading */
+  .slide-overlay{justify-content:center;padding-top:1.25rem;padding-bottom:1.25rem}
+  .slide-content{align-items:center;text-align:center;padding:1.25rem 1rem;max-width:92%;margin:0 auto}
+
+  /* Headline: keep impact but avoid excessive wrapping */
+  .slide-content h2{font-size:clamp(1.6rem,6.2vw,2.25rem);line-height:1.06;margin-bottom:0.5rem}
+
+  /* Subtitle: smaller and tighter line-height for better mobile readability */
+  .slide-content p{font-size:0.96rem;line-height:1.45;max-width:40ch;color:rgba(255,255,255,0.98);margin:0}
+
+  /* CTA: full width, larger tap target, clear visual prominence */
+  .btn-cta{display:block;width:100%;max-width:520px;padding:1rem 1.1rem;font-size:1rem;border-radius:12px;min-height:52px}
+  .btn-cta:active{transform:translateY(0)}
+
+  /* Keep carousel arrows hidden by default; existing JS shows them on touch via .controls-visible
+     (we intentionally do not change JS behavior to preserve current interaction) */
+
+  /* Slight opt: increase dot spacing for easier tapping */
+  .custom-indicators{gap:0.8rem;bottom:88px}
+}
+
+/* Mobile-only entrance animations for hero content (fade + slight slide)
+   - Runs only on small screens to avoid changing desktop behavior
+   - Small delays improve perceived motion and clarity */
+@media (max-width:768px){
+  .slide-content{
+    opacity:0;
+    transform:translateY(8px);
+    transition:opacity .36s cubic-bezier(.2,.9,.3,1), transform .36s cubic-bezier(.2,.9,.3,1);
+    will-change:opacity, transform;
+  }
+  /* When the carousel slide becomes active, reveal content */
+  .carousel-item.active .slide-content{
+    opacity:1;
+    transform:none;
+    transition-delay:0.12s;
+  }
+
+  /* CTA entrance: slightly delayed pop for emphasis, large touch target preserved */
+  .btn-cta{
+    opacity:0;
+    transform:translateY(6px) scale(0.995);
+    transition:opacity .36s ease, transform .36s ease;
+    will-change:opacity, transform;
+  }
+  .carousel-item.active .btn-cta{
+    opacity:1;
+    transform:none;
+    transition-delay:0.18s;
+  }
+}
+
 /* Reveal animations */
 .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:none}
