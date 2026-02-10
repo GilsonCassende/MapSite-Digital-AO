@@ -17,7 +17,8 @@ body{
 .container{max-width:1100px;margin:0 auto;padding:1rem}
 
 /* Header */
-.site-header{background:var(--white);position:sticky;top:0;z-index:50;box-shadow:0 1px 0 rgba(10,58,102,0.06)}
+.site-header{background:var(--white);position:sticky;top:0;z-index:50;box-shadow:0 1px 0 rgba(10,58,102,0.06);transition:transform .28s ease}
+.site-header.hide{transform:translateY(-110%)}
 .header-inner{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 0}
 .logo{display:flex;align-items:center;gap:.75rem;font-weight:700;color:var(--blue);font-size:1.125rem}
 .logo img{height:44px;width:auto;display:block}
@@ -318,8 +319,8 @@ h2{margin:0 0 1rem;color:var(--blue)}
 @media (max-width:768px){
     /* Reduce hero height on small devices so content and next section are visible sooner
       Use a slightly smaller height for a professional mobile layout */
-    .hero{min-height:66vh}
-    .hero-slide{min-height:66vh}
+    .hero{min-height:85vh}
+    .hero-slide{min-height:85vh}
 
   /* Keep carousel layout flow-friendly on mobile */
   #heroCarousel{position:relative;height:auto}

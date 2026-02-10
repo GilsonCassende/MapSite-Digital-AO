@@ -238,6 +238,35 @@ document.addEventListener('DOMContentLoaded', function(){
     }catch(e){/* ignore resize errors */}
   });
 
+  // Show header when scrolling up, hide when scrolling down (mobile & desktop)
+  (function manageHeaderOnScroll(){
+    if(!header) return;
+    let lastY = window.pageYOffset || 0;
+    let ticking = false;
+    const THRESHOLD = 10;
+    const onScroll = () => {
+      const y = window.pageYOffset || 0;
+      if(!ticking){
+        window.requestAnimationFrame(() => {
+          // If mobile menu is open, keep header visible
+          const menuOpen = document.querySelector('.navbar-collapse.show');
+          if(menuOpen){ header.classList.remove('hide'); lastY = y; ticking = false; return; }
+
+          if(Math.abs(y - lastY) < THRESHOLD){ ticking = false; return; }
+          if(y > lastY && y > 80){ // scrolling down
+            header.classList.add('hide');
+          } else { // scrolling up
+            header.classList.remove('hide');
+          }
+          lastY = y;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', onScroll, {passive:true});
+  })();
+
   // Staggered entrance for persona cards in "Para quem é" section
   try{
     const personaCards = document.querySelectorAll('.para-quem .persona-card');
