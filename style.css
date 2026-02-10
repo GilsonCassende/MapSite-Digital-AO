@@ -95,7 +95,7 @@ h2{margin:0 0 1rem;color:var(--blue)}
 .hero-img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center center;z-index:1}
 .slide-overlay{position:absolute;top:50%;left:0;transform:translateY(-50%);width:100%;height:auto;display:flex;align-items:center;justify-content:flex-start;z-index:10;padding:0}
 /* left-focused gradient to improve legibility while keeping image visible */
-.slide-overlay::before{content:'';position:absolute;inset:0;z-index:5;background:linear-gradient(90deg,rgba(0,0,0,0.52) 0%,rgba(0,0,0,0.35) 22%,rgba(0,0,0,0.12) 45%,rgba(0,0,0,0) 100%);pointer-events:none}
+.slide-overlay::before{content:'';position:absolute;inset:0;z-index:5;background:linear-gradient(90deg,rgba(0,0,0,0.68) 0%,rgba(0,0,0,0.48) 25%,rgba(0,0,0,0.22) 50%,rgba(0,0,0,0) 100%);pointer-events:none}
 .slide-content{position:relative;z-index:10;color:white;padding:3rem 2rem;width:100%;max-width:700px;padding-left:3%;padding-right:2rem}
 .slide-content{display:flex;flex-direction:column;align-items:flex-start;gap:0.8rem}
 .slide-content h2{color:white;margin:0 0 0.75rem 0;font-size:clamp(1.9rem,3.8vw,3.2rem);line-height:1.08;font-weight:800;text-shadow:0 6px 20px rgba(0,0,0,0.35)}
@@ -103,7 +103,7 @@ h2{margin:0 0 1rem;color:var(--blue)}
 .slide-badge{display:none}
 
 /* Dark overlay layer to ensure legibility over images */
-.hero-slide::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.35) 0%,rgba(0,0,0,0.25) 30%,rgba(0,0,0,0.08) 60%,rgba(0,0,0,0) 100%);z-index:5;pointer-events:none}
+.hero-slide::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.50) 0%,rgba(0,0,0,0.35) 30%,rgba(0,0,0,0.12) 60%,rgba(0,0,0,0) 100%);z-index:5;pointer-events:none}
 
 /* CTA button in slides */
 .btn-cta{margin-top:1.25rem;padding:.95rem 1.2rem;border-radius:12px;font-size:1rem;background:linear-gradient(90deg,var(--accent),#0056d6);box-shadow:0 12px 36px rgba(10,66,255,0.14);color:var(--white);border:0}
