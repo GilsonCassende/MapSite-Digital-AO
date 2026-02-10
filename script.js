@@ -260,6 +260,8 @@ document.addEventListener('DOMContentLoaded', function(){
     const steps = document.querySelectorAll('.como-funciona .steps li');
     if(steps && steps.length){
       steps.forEach((li, idx) => {
+        // ensure all items start closed
+        li.classList.remove('open');
         li.setAttribute('tabindex', '0');
         li.setAttribute('role', 'button');
         li.setAttribute('aria-expanded', 'false');
