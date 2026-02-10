@@ -316,9 +316,9 @@ h2{margin:0 0 1rem;color:var(--blue)}
    - Make CTA full-width / larger touch target for conversion
    All changes scoped to this media query to avoid affecting desktop. */
 @media (max-width:768px){
-  /* Slightly taller than earlier mobile rules to leave a hint of next section */
-  .hero{min-height:80vh}
-  .hero-slide{min-height:80vh}
+  /* Reduce hero height on small devices so content and next section are visible sooner */
+  .hero{min-height:72vh}
+  .hero-slide{min-height:72vh}
 
   /* Keep carousel layout flow-friendly on mobile */
   #heroCarousel{position:relative;height:auto}
@@ -355,31 +355,35 @@ h2{margin:0 0 1rem;color:var(--blue)}
    - Runs only on small screens to avoid changing desktop behavior
    - Small delays improve perceived motion and clarity */
 @media (max-width:768px){
+  /* Faster content reveal: shorter duration and no delays to avoid waiting during slide change */
   .slide-content{
     opacity:0;
-    transform:translateY(8px);
-    transition:opacity .36s cubic-bezier(.2,.9,.3,1), transform .36s cubic-bezier(.2,.9,.3,1);
+    transform:translateY(6px);
+    transition:opacity .22s ease, transform .22s ease;
     will-change:opacity, transform;
+    transition-delay:0s;
   }
-  /* When the carousel slide becomes active, reveal content */
+  /* Immediately reveal content when slide becomes active */
   .carousel-item.active .slide-content{
     opacity:1;
     transform:none;
-    transition-delay:0.12s;
   }
 
-  /* CTA entrance: slightly delayed pop for emphasis, large touch target preserved */
+  /* CTA: quicker reveal with minimal delay for stronger conversion */
   .btn-cta{
     opacity:0;
-    transform:translateY(6px) scale(0.995);
-    transition:opacity .36s ease, transform .36s ease;
+    transform:translateY(4px) scale(0.996);
+    transition:opacity .22s ease, transform .22s ease;
     will-change:opacity, transform;
+    transition-delay:0s;
   }
   .carousel-item.active .btn-cta{
     opacity:1;
     transform:none;
-    transition-delay:0.18s;
   }
+
+  /* Shorten the carousel fade duration on mobile so content appears faster during slide changes */
+  .carousel .carousel-item{ transition: opacity 0.6s cubic-bezier(.2,.9,.3,1) !important; }
 }
 
 /* Reveal animations */
