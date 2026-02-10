@@ -243,10 +243,9 @@ h2{margin:0 0 1rem;color:var(--blue)}
 .como-funciona .steps li span{display:none;color:var(--gray);font-size:.98rem;line-height:1.5;max-width:none;grid-column:2;margin:0;transition:max-height .22s ease,opacity .18s ease}
 .como-funciona .steps li.open span{display:block;opacity:1;overflow:visible;-webkit-line-clamp:unset;max-height:240px}
 
-/* Collapsible description: keep compact by default and expand on .open */
-.como-funciona .steps li span{transition:max-height .28s ease,opacity .22s}
-.como-funciona .steps li span{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
-.como-funciona .steps li.open span{display:block;overflow:visible;-webkit-line-clamp:unset;max-height:240px}
+/* Collapsible description: hidden by default, expand on .open */
+.como-funciona .steps li span{display:none;opacity:0;max-height:0;overflow:hidden;transition:max-height .28s ease,opacity .22s}
+.como-funciona .steps li.open span{display:block;opacity:1;overflow:visible;-webkit-line-clamp:unset;max-height:240px}
 
 /* Visual caret indicator on the right */
 .como-funciona .steps li::after{content:'›';color:rgba(10,58,102,0.28);font-size:20px;transform:rotate(90deg);transition:transform .22s, color .18s;grid-column:3;justify-self:center}
@@ -265,9 +264,9 @@ h2{margin:0 0 1rem;color:var(--blue)}
   .como-funciona .steps li{padding:1rem;grid-template-columns:48px 1fr 28px;min-height:80px}
   .como-funciona .steps li::before{width:40px;height:40px;font-size:.95rem}
   .como-funciona .steps li strong{font-size:1.02rem;text-align:left}
-  /* On small screens collapse description by default and allow open to expand */
-  .como-funciona .steps li span{max-height:3.6em;overflow:hidden}
-  .como-funciona .steps li.open span{max-height:240px}
+  /* On small screens keep description hidden by default and expand when open */
+  .como-funciona .steps li span{max-height:0;overflow:hidden;display:none}
+  .como-funciona .steps li.open span{display:block;max-height:240px}
 }
 
 .cta-inner{text-align:center;padding:1.25rem;border-radius:10px;background:#ffffff;box-shadow:0 6px 20px rgba(10,58,102,0.04)}
