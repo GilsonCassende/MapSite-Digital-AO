@@ -190,6 +190,23 @@ h2{margin:0 0 1rem;color:var(--blue)}
   pointer-events:auto;
 }
 
+/* Hide carousel controls by default; show on hover or when .controls-visible is set (for touch) */
+#heroCarousel .carousel-control-prev,
+#heroCarousel .carousel-control-next{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity .22s ease, visibility .22s;
+}
+#heroCarousel:hover .carousel-control-prev,
+#heroCarousel:hover .carousel-control-next,
+#heroCarousel.controls-visible .carousel-control-prev,
+#heroCarousel.controls-visible .carousel-control-next{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+}
+
 /* Slightly larger touch area for controls on mobile */
 .carousel-control-prev,.carousel-control-next{min-width:48px}
 .carousel .carousel-control-prev-icon,

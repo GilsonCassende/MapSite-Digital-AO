@@ -99,6 +99,26 @@ document.addEventListener('DOMContentLoaded', function(){
         if(ev.key === 'ArrowLeft') heroCarouselInstance.prev();
         if(ev.key === 'ArrowRight') heroCarouselInstance.next();
       });
+
+      // Mostrar controles no hover (desktop) e no toque/pointer (mobile)
+      (function manageCarouselControls(carouselEl){
+        if(!carouselEl) return;
+        let controlsHideTimeout = null;
+        const showControls = () => {
+          carouselEl.classList.add('controls-visible');
+          if(controlsHideTimeout) clearTimeout(controlsHideTimeout);
+          controlsHideTimeout = setTimeout(() => carouselEl.classList.remove('controls-visible'), 2200);
+        };
+        const hideControls = () => {
+          if(controlsHideTimeout) clearTimeout(controlsHideTimeout);
+          carouselEl.classList.remove('controls-visible');
+        };
+        carouselEl.addEventListener('pointerenter', showControls);
+        carouselEl.addEventListener('pointermove', showControls);
+        carouselEl.addEventListener('pointerleave', hideControls);
+        carouselEl.addEventListener('touchstart', showControls, {passive:true});
+        carouselEl.addEventListener('focusin', showControls);
+      })(heroEl);
     }
   }
 
