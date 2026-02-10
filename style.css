@@ -319,8 +319,8 @@ h2{margin:0 0 1rem;color:var(--blue)}
 @media (max-width:768px){
     /* Reduce hero height on small devices so content and next section are visible sooner
       Use a slightly smaller height for a professional mobile layout */
-    .hero{min-height:85vh}
-    .hero-slide{min-height:85vh}
+    .hero{min-height:64vh}
+    .hero-slide{min-height:64vh}
 
   /* Keep carousel layout flow-friendly on mobile */
   #heroCarousel{position:relative;height:auto}
